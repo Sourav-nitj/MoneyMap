@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8787;
 
 app.listen(PORT, '127.0.0.1', () => {
   console.log(`Server running on http://127.0.0.1:${PORT}`);
