@@ -1,57 +1,56 @@
-import axios from 'axios';
-
+import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL,
 });
+
 // Add token to Authorization header for all requests
 API.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
+
     if (token) {
       config.headers = config.headers || {};
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor to handle 401 errors globally
+// Response interceptor
 API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Check if this is expected (e.g., BudgetManager without auth)
-      // Don't clear token or redirect for expected unauthenticated endpoints
-      const url = error.config?.url || '';
-      const expectedAuthErrors = ['/budgets'];
-      
-      const isExpectedError = expectedAuthErrors.some(endpoint => url.includes(endpoint));
-      
+      const url = error.config?.url || "";
+      const expectedAuthErrors = ["/budgets"];
+
+      const isExpectedError = expectedAuthErrors.some((endpoint) =>
+        url.includes(endpoint)
+      );
+
       if (!isExpectedError) {
-        // Token expired or invalid for protected endpoints - clear storage and trigger logout
-        localStorage.removeItem('token');
-        
-        // Dispatch custom event for components to react
-        window.dispatchEvent(new CustomEvent('auth:logout', { 
-          detail: { reason: 'Token expired' } 
-        }));
-        
-        // Reload page to show login screen
+        localStorage.removeItem("token");
+
+        window.dispatchEvent(
+          new CustomEvent("auth:logout", {
+            detail: { reason: "Token expired" },
+          })
+        );
+
         setTimeout(() => {
-          if (window.location.pathname !== '/') {
-            window.location.href = '/';
+          if (window.location.pathname !== "/") {
+            window.location.href = "/";
           }
         }, 100);
       }
     }
+
     return Promise.reject(error);
   }
 );
-
 export const login = (credentials) => API.post('/auth/login', credentials).then(res => res.data);
 export const signup = (data) => API.post('/auth/register', data).then(res => res.data);
 
