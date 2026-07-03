@@ -43,7 +43,7 @@ const cardStyle = {
 // Helper function to format amount without minus signs
 const formatAmount = (amount) => {
   const absValue = Math.abs(amount).toFixed(2);
-  return `$${absValue}`;
+  return `₹${absValue}`;
 };
 
 // Helper function to get display amount and color for transaction list
@@ -51,7 +51,7 @@ const getTransactionDisplay = (amount) => {
   const absValue = Math.abs(amount).toFixed(2);
   const isExpense = amount < 0;
   return {
-    display: `$${absValue}`,
+    display: `₹${absValue}`,
     color: isExpense ? '#FF3D00' : '#00C853',
     prefix: isExpense ? '↓ ' : '↑ '
   };
@@ -676,7 +676,7 @@ const handleAdd = (e) => {
         {expense > BUDGET_LIMIT && (
           <Grid size={12}>
             <Typography color="error" sx={{ fontWeight: 'bold', mb: 2 }}>
-              ⚠️ Warning: You have exceeded your monthly budget of ${BUDGET_LIMIT}!
+              ⚠️ Warning: You have exceeded your monthly budget of ₹{BUDGET_LIMIT}!
             </Typography>
           </Grid>
         )}
@@ -824,7 +824,7 @@ const handleAdd = (e) => {
                           <Cell key={`cell-${index}`} fill={INCOME_COLORS[index % INCOME_COLORS.length]} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
+                      <Tooltip formatter={(value) => `₹${value.toFixed(2)}`} />
                       <Legend verticalAlign="bottom" height={40} />
                     </PieChart>
                   </ResponsiveContainer>
@@ -857,7 +857,7 @@ const handleAdd = (e) => {
                           <Cell key={`cell-${index}`} fill={EXPENSE_COLORS[index % EXPENSE_COLORS.length]} />
                         ))}
                       </Pie>
-                      <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
+                      <Tooltip formatter={(value) => `₹${value.toFixed(2)}`} />
                       <Legend verticalAlign="bottom" height={40} />
                     </PieChart>
                   </ResponsiveContainer>

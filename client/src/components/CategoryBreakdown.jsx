@@ -48,7 +48,7 @@ function CategoryBreakdown({ data }) {
                         <Typography variant="body2">{item.category}</Typography>
                       </Box>
                       <Typography variant="body2">
-                        ${item.total.toFixed(2)} ({percentage.toFixed(1)}%)
+                        ₹{item.total.toFixed(2)} ({percentage.toFixed(1)}%)
                       </Typography>
                     </Box>
                     <LinearProgress
@@ -81,7 +81,7 @@ function CategoryBreakdown({ data }) {
                     secondary={`${item.count} transaction${item.count !== 1 ? 's' : ''}`}
                   />
                   <Chip 
-                    label={`$${item.total.toFixed(2)}`} 
+                    label={`₹${item.total.toFixed(2)}`} 
                     size="small"
                     sx={{ 
                       backgroundColor: COLORS[item.category] || '#795548',

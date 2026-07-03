@@ -35,7 +35,7 @@ function SpendingChart({ data }) {
             ))}
           </Pie>
           <Tooltip
-            formatter={(value) => `$${value.toFixed(2)}`}
+            formatter={(value) => `₹${value.toFixed(2)}`}
             contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}
           />
           <Legend verticalAlign="bottom" height={40} />
@@ -44,7 +44,7 @@ function SpendingChart({ data }) {
       {chartData.length > 0 && (
         <Box sx={{ textAlign: 'center', mt: 1 }}>
           <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
-            Total Spending: ${totalSpending.toFixed(2)}
+            Total Spending: ₹{totalSpending.toFixed(2)}
           </Typography>
         </Box>
       )}

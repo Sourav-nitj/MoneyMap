@@ -158,7 +158,7 @@ function BudgetManager({ categoryTotals = [] }) {
                 value={limit}
                 onChange={(e) => setLimit(e.target.value)}
                 sx={{ width: 150 }}
-                InputProps={{ startAdornment: <Typography sx={{ mr: 0.5 }}>$</Typography> }}
+                InputProps={{ startAdornment: <Typography sx={{ mr: 0.5 }}>₹</Typography> }}
               />
               <Button 
                 variant="contained" 
@@ -242,7 +242,7 @@ function BudgetManager({ categoryTotals = [] }) {
                         ) : (
                           <>
                             <Typography variant="body2" color="textSecondary">
-                              ${spending.toFixed(2)} / ${budget.limit.toFixed(2)}
+                              ₹{spending.toFixed(2)} / ₹{budget.limit.toFixed(2)}
                             </Typography>
                             <IconButton size="small" onClick={() => handleEdit(budget)}>
                               <EditIcon fontSize="small" />
@@ -280,8 +280,8 @@ function BudgetManager({ categoryTotals = [] }) {
                         color={isOverBudget ? 'error' : 'textSecondary'}
                       >
                         {isOverBudget 
-                          ? `$${(spending - budget.limit).toFixed(2)} over` 
-                          : `$${(budget.limit - spending).toFixed(2)} remaining`
+                          ? `₹${(spending - budget.limit).toFixed(2)} over` 
+                          : `₹${(budget.limit - spending).toFixed(2)} remaining`
                         }
                       </Typography>
                     </Box>

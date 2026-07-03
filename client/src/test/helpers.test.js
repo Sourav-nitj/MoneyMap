@@ -8,26 +8,26 @@ describe('Helper Functions', () => {
   describe('formatAmount', () => {
     const formatAmount = (amount) => {
       const absValue = Math.abs(amount).toFixed(2);
-      return `$${absValue}`;
+      return `₹${absValue}`;
     };
 
     it('should format positive numbers correctly', () => {
-      expect(formatAmount(100)).toBe('$100.00');
-      expect(formatAmount(1234.56)).toBe('$1234.56');
+      expect(formatAmount(100)).toBe('₹100.00');
+      expect(formatAmount(1234.56)).toBe('₹1234.56');
     });
 
     it('should format negative numbers correctly (remove minus sign)', () => {
-      expect(formatAmount(-100)).toBe('$100.00');
-      expect(formatAmount(-50.25)).toBe('$50.25');
+      expect(formatAmount(-100)).toBe('₹100.00');
+      expect(formatAmount(-50.25)).toBe('₹50.25');
     });
 
     it('should format zero correctly', () => {
-      expect(formatAmount(0)).toBe('$0.00');
+      expect(formatAmount(0)).toBe('₹0.00');
     });
 
     it('should handle decimal places properly', () => {
-      expect(formatAmount(99.99)).toBe('$99.99');
-      expect(formatAmount(0.01)).toBe('$0.01');
+      expect(formatAmount(99.99)).toBe('₹99.99');
+      expect(formatAmount(0.01)).toBe('₹0.01');
     });
   });
 
@@ -36,7 +36,7 @@ describe('Helper Functions', () => {
       const absValue = Math.abs(amount).toFixed(2);
       const isExpense = amount < 0;
       return {
-        display: `$${absValue}`,
+        display: `₹${absValue}`,
         color: isExpense ? '#FF3D00' : '#00C853',
         prefix: isExpense ? '↓ ' : '↑ '
       };
@@ -44,14 +44,14 @@ describe('Helper Functions', () => {
 
     it('should display expense correctly', () => {
       const result = getTransactionDisplay(-50);
-      expect(result.display).toBe('$50.00');
+      expect(result.display).toBe('₹50.00');
       expect(result.color).toBe('#FF3D00');
       expect(result.prefix).toBe('↓ ');
     });
 
     it('should display income correctly', () => {
       const result = getTransactionDisplay(100);
-      expect(result.display).toBe('$100.00');
+      expect(result.display).toBe('₹100.00');
       expect(result.color).toBe('#00C853');
       expect(result.prefix).toBe('↑ ');
     });
