@@ -1,5 +1,5 @@
 TN:
-SF:routes\analytics.js
+SF:routes/analytics.js
 FN:13,(anonymous_0)
 FN:27,(anonymous_1)
 FN:44,(anonymous_2)
@@ -71,7 +71,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:routes\auth.js
+SF:routes/auth.js
 FN:15,(anonymous_0)
 FN:100,(anonymous_1)
 FN:142,(anonymous_2)
@@ -236,7 +236,7 @@ BRF:49
 BRH:0
 end_of_record
 TN:
-SF:routes\budgets.js
+SF:routes/budgets.js
 FN:13,(anonymous_0)
 FN:35,(anonymous_1)
 FN:80,(anonymous_2)
@@ -300,7 +300,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:routes\transactions.js
+SF:routes/transactions.js
 FN:13,(anonymous_0)
 FN:27,(anonymous_1)
 FN:49,(anonymous_2)
@@ -363,7 +363,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:routes\middleware\auth.js
+SF:routes/middleware/auth.js
 FN:7,(anonymous_0)
 FNF:1
 FNH:0

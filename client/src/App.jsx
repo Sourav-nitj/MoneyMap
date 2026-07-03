@@ -116,7 +116,7 @@ function AuthPage({ onLogin }) {
       // Assuming the API returns { token: '...', user: {...} } or { token: '...' }
       const token = response.token || response;
       const userData = response.user || response;
-      onLogin(token, userData);
+      onLogin(token, userData, !isLogin);
     } catch (err) {
       setError(err.response?.data?.message || 'Authentication failed. Please try again.');
     } finally {
