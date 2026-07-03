@@ -16,6 +16,11 @@ const analyticsRoutes = require("./routes/analytics");
 const budgetsRoutes = require("./routes/budgets");
 
 app.use("/api/auth", authRoutes);
+app.post("/api/auth/register", (req, res) => {
+  res.json({
+    message: "DIRECT REGISTER ROUTE WORKS"
+  });
+});
 app.use("/api/transactions", transactionsRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/budgets", budgetsRoutes);
